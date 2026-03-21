@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Navjivan Care</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="top-bar">
+      <div class="brand-mark" style="font-size:20px;"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo">
+        <span class="navjivan">Navjivan</span> <span class="care">Care</span> Orders Dashboard
+      </div>
+      <div class="admin-actions">
+        <a href="medicine.html" class="badge" style="text-decoration:none;">Store</a>
+        <button id="adminLogout" class="secondary" type="button">Logout</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Orders</h3>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Patient</th>
+            <th>Mobile</th>
+            <th>Age</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Care - Departments & Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #f34e3a;
+            --deep-blue: #1a2a6c;
+            --text-dark: #333;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+
+        header { background: var(--white); padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-logo { font-size: 26px; font-weight: 800; color: var(--primary-red); text-transform: uppercase; letter-spacing: 2px; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        /* --- Department Styling --- */
+        .dept-section { background: var(--white); border-radius: 15px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .dept-header { 
+            padding: 25px; background: var(--deep-blue); color: white; cursor: pointer; 
+            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        }
+        .dept-header:hover { background: #233a8a; }
+        .dept-header h2 { font-size: 20px; font-weight: 600; }
+        .dept-header i { font-size: 22px; transition: 0.4s; }
+        .dept-header.active i { transform: rotate(180deg); }
+
+        .dept-content { display: none; padding: 30px; border-top: 5px solid var(--primary-red); }
+        .dept-desc { margin-bottom: 25px; line-height: 1.7; color: #555; border-left: 4px solid var(--primary-red); padding-left: 15px; }
+
+        /* --- Doctor Cards --- */
+        .doctor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .dr-card { 
+            background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 20px; 
+            display: flex; gap: 20px; position: relative; transition: 0.3s;
+        }
+        .dr-card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dr-img { width: 100px; height: 100px; border-radius: 10px; object-fit: cover; background: #eee; }
+        
+        .dr-info h4 { font-size: 17px; margin-bottom: 5px; color: var(--deep-blue); }
+        .dr-contact-info { font-size: 13px; color: #666; margin-top: 10px; line-height: 1.6; }
+        .dr-contact-info i { color: var(--primary-red); width: 20px; }
+
+        .view-btn { 
+            margin-top: 15px; padding: 8px 20px; background: var(--primary-red); color: white; 
+            border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase;
+        }
+        .view-btn:hover { background: #333; }
+
+        /* --- Footer (Hidden by default) --- */
+        #main-footer { 
+            display: none; background: #222; color: white; padding: 60px 0 30px; margin-top: 50px; 
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .footer-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; text-align: center; }
+        .app-stores i { font-size: 30px; margin: 0 15px; cursor: pointer; transition: 0.3s; }
+        .app-stores i:hover { color: var(--primary-red); }
+
+        /* --- Social Icons with Hover Name Transition --- */
+        .social-row { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+        .social-item { 
+            position: relative; width: 55px; height: 55px; background: #333; 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            cursor: pointer; transition: all 0.4s ease; overflow: hidden;
+        }
+        .social-item i { font-size: 20px; transition: 0.4s; }
+        .social-item .name-tag { 
+            position: absolute; font-size: 11px; font-weight: 700; opacity: 0; 
+            transform: translateY(20px); transition: 0.4s; color: white;
+        }
+
+        .social-item:hover { width: 150px; border-radius: 30px; background: var(--primary-red); }
+        .social-item:hover i { transform: translateY(-30px); opacity: 0; }
+        .social-item:hover .name-tag { opacity: 1; transform: translateY(0); }
+
+        .hospital-email { color: var(--primary-red); font-weight: 600; margin-top: 20px; display: block; }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <header>
+        <div class="nav-logo brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span> Hospital</div>
+    </header>
+
+    <div class="container">
+        <div class="dept-section">
+            <div class="dept-header" onclick="toggleDept(this)">
+                <h2>Cardiology Department</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dept-content">
+                <p class="dept-desc">Humara Cardiology department advanced heart surgeries aur preventive care ke liye jana jata hai. Hum latest robotic technology use karte hain.</p>
+                <div class="doctor-grid">
+                    <div class="dr-card">
+                        <img src="https://www.artemishospitals.com/BackEndImages/DoctorImage/dr-dr-a-b-dey.jpg" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Naresh Trehan</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 90000 11111</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223344</p>
+                                <p><i class="fas fa-envelope"></i> contact@navjivancare.com</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="dr-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROzErxsUa5aqqfeXiI6k5ErVHxM9phEYmOTw&s" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Vikram Patel</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 90000 22222</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223344</p>
+                                <p><i class="fas fa-envelope"></i> contact@navjivancare.com</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-section">
+            <div class="dept-header" onclick="toggleDept(this)">
+                <h2>Neurology Department</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dept-content">
+                <p class="dept-desc">Brain aur spine se judi har samasya ke liye humare specialists 24/7 available hain.</p>
+                <div class="doctor-grid">
+                    <div class="dr-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROzErxsUa5aqqfeXiI6k5ErVHxM9phEYmOTw&s" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. V.P. Singh</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 98888 33333</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223355</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="dr-card">
+                        <img src="https://www.artemishospitals.com/BackEndImages/DoctorImage/dr-dr-a-b-dey.jpg" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Aman Gupta</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 98888 44444</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223355</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-section">
+            <div class="dept-header" onclick="toggleDept(this)">
+                <h2>Maternity & Gynaecology</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dept-content">
+                <p class="dept-desc">Safe delivery aur women health care ke liye humara department best facilities provide karta hai.</p>
+                <div class="doctor-grid">
+                    <div class="dr-card">
+                        <img src="https://burst.shopifycdn.com/photos/a-doctor-smiles-while-holding-her-clipboard.jpg?width=1000" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Kavita Bansal</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 97777 55555</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223366</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="dr-card">
+                        <img src="https://thumbs.dreamstime.com/b/young-indian-female-doctor-holding-red-heart-shape-happy-77438932.jpg" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Neha Verma</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 97777 66666</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223366</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-section">
+            <div class="dept-header" onclick="toggleDept(this)">
+                <h2>Oncology (Cancer Care)</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dept-content">
+                <p class="dept-desc">Cancer se ladne ke liye humari team chemotherapy aur advanced radiation therapy use karti hai.</p>
+                <div class="doctor-grid">
+                    <div class="dr-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVlvm_NiEyuvC06TorpxxBKXWQaHQYcS_jg&s" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Ashok Vaid</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 96666 77777</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223377</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="dr-card">
+                        <img src="https://www.artemishospitals.com/BackEndImages/DoctorImage/dr-dr-a-b-dey.jpg" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Ritesh Aggarwal</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 96666 88888</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223377</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dept-section">
+            <div class="dept-header" onclick="toggleDept(this)">
+                <h2>Gastrosciences</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dept-content">
+                <p class="dept-desc">Digestive system aur liver transplant se judi behtareen suvidhayein.</p>
+                <div class="doctor-grid">
+                    <div class="dr-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU7AI16pD3MOnNlLOOUfaWN_IeGbyBcHphfA&s" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. Sandeep Mittal</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 95555 99999</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223388</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="dr-card">
+                        <img src="https://corporate-storage-1.s3.dualstack.ap-south-1.amazonaws.com/prod/doctor-profiles/1762255826895-upload-3790701625567083960DR%20SHAILESH%20PHOTO%20(1).jpeg" class="dr-img">
+                        <div class="dr-info">
+                            <h4>Dr. A.S. Soin</h4>
+                            <div class="dr-contact-info">
+                                <p><i class="fas fa-phone"></i> Doctor: +91 95555 10101</p>
+                                <p><i class="fas fa-hospital"></i> Hospital: 0522-223388</p>
+                            </div>
+                            <button class="view-btn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Navjivan Care Apps</h3>
+                    <div class="app-stores" style="margin-top: 20px;">
+                        <i class="fab fa-google-play"></i>
+                        <i class="fab fa-apple"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3>Contact Center</h3>
+                    <span class="hospital-email">help@navjivancare.com</span>
+                    <p style="margin-top:10px;">HQ: 123 Health Enclave, Lucknow</p>
+                </div>
+            </div>
+
+            <div class="social-row">
+                <div class="social-item">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="name-tag">FACEBOOK</span>
+                </div>
+                <div class="social-item">
+                    <i class="fab fa-instagram"></i>
+                    <span class="name-tag">INSTAGRAM</span>
+                </div>
+                <div class="social-item">
+                    <i class="fab fa-twitter"></i>
+                    <span class="name-tag">TWITTER</span>
+                </div>
+                <div class="social-item">
+                    <i class="fab fa-youtube"></i>
+                    <span class="name-tag">YOUTUBE</span>
+                </div>
+                <div class="social-item">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="name-tag">LINKEDIN</span>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top: 40px; font-size: 12px; opacity: 0.5;">Â© 2026 Navjivan Care Organization.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDept(element) {
+            // Toggle active class for icon rotation
+            element.classList.toggle('active');
+            
+            // Show/Hide Content
+            const content = element.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+                
+                // Show Footer when a department is clicked
+                document.getElementById('main-footer').style.display = "block";
+            }
+        }
+    </script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

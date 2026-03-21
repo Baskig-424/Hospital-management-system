@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Care | Excellence in Healthcare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #004a99;
+            --secondary: #28a745;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #fff; }
+
+        /* Header */
+        header { background: var(--primary); color: white; padding: 20px; text-align: center; }
+
+        /* 4 Image Sections */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #f0f4f8;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+
+        .card-content { padding: 15px; }
+
+        /* Success Stories Section */
+        .stories-section { padding: 40px; background: white; text-align: center; }
+        .stories-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .story-card { width: 45%; min-width: 300px; text-align: left; position: relative; }
+        .view-more { 
+            display: inline-block; 
+            margin-top: 20px; 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px 10px;
+            text-align: center;
+        }
+
+        .contact-info { margin-bottom: 30px; border-bottom: 1px solid #444; padding-bottom: 20px; }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .icon-box {
+            position: relative;
+            font-size: 24px;
+            color: #bbb;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Hover Effect: Darken & Tooltip */
+        .icon-box:hover { color: #fff; filter: brightness(0.5); }
+
+        .icon-box::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            background: rgba(0,0,0,0.8);
+            padding: 2px 8px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .icon-box:hover::after { opacity: 1; }
+
+        .copyright {
+            margin-top: 30px;
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+<header>
+    <h1 class="brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span></h1>
+    <p>Your Health, Our Priority</p>
+</header>
+
+<section class="services-grid">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=500" alt="Hospital">
+        <div class="card-content">
+            <h3>#1 Hospital in India</h3>
+            <p>Recognized for excellence in clinical care and patient safety across the nation.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500" alt="Neuroscience">
+        <div class="card-content">
+            <h3>Neuroscience News</h3>
+            <p>Advancing the frontiers of brain research with cutting-edge technology.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbjG-ACmzYvPNbgtc7HzDgv--WcKX0uCGgw&s" alt="Cancer Care">
+        <div class="card-content">
+            <h3>Brain Cancer Research</h3>
+            <p>Specialized oncology department dedicated to complex brain tumor treatments.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500" alt="Emergency">
+        <div class="card-content">
+            <h3>Launch 24*7 Services</h3>
+            <p>Now open round the clock for emergency and trauma care services.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stories-section">
+    <h2>Success Stories</h2>
+    <div class="stories-grid">
+        <div class="story-card">
+            <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=500" width="100%" style="border-radius:8px;">
+            <h4>A Miracle Recovery</h4>
+            <p>How our neuro-team helped Rajan walk again after a major spine injury.</p>
+        </div>
+        <div class="story-card">
+            <img src="https://images.unsplash.com/photo-1576765608596-619d3a74ee58?auto=format&fit=crop&w=500" width="100%" style="border-radius:8px;">
+            <h4>Beating the Odds</h4>
+            <p>Mrs. Sharma's journey of winning the battle against stage 3 brain cancer.</p>
+        </div>
+    </div>
+    <a href="#" class="view-more">View More Success Stories <i class="fas fa-arrow-right"></i></a>
+</section>
+
+<footer>
+    <div class="contact-info">
+        <p><i class="fas fa-phone"></i> Contact No: +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> Email: info@navjivancare.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: Bariatu, Ranchi</p>
+    </div>
+
+    <div class="social-icons">
+        <div class="icon-box" data-name="PlayStore"><i class="fab fa-google-play"></i></div>
+        <div class="icon-box" data-name="AppStore"><i class="fab fa-apple"></i></div>
+        <div class="icon-box" data-name="Facebook"><i class="fab fa-facebook"></i></div>
+        <div class="icon-box" data-name="Instagram"><i class="fab fa-instagram"></i></div>
+        <div class="icon-box" data-name="Twitter"><i class="fab fa-twitter"></i></div>
+        <div class="icon-box" data-name="YouTube"><i class="fab fa-youtube"></i></div>
+        <div class="icon-box" data-name="LinkedIn"><i class="fab fa-linkedin"></i></div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2026 Navjivan Care. All rights reserved.
+    </div>
+</footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

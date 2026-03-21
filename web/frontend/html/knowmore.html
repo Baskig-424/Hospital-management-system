@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Model of Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS: Teacher's Design Rules */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background-color: #fff; color: #333; line-height: 1.6; }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        /* Title Section */
+        .page-title { color: #e74c3c; text-align: center; margin-bottom: 30px; font-size: 28px; font-weight: bold; }
+
+        /* Infrastructure Grid */
+        .section-header { margin: 40px 0 20px; text-align: center; }
+        .section-header h2 { font-size: 24px; color: #444; }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Do columns mein divide kiya */
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-item { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .grid-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
+
+        /* Info Card Section */
+        .info-card {
+            background: #fdfdfd; border-radius: 15px; padding: 30px;
+            margin-top: 40px; border: 1px solid #eee; position: relative;
+        }
+        .info-card h3 { color: #444; margin-bottom: 15px; }
+        .info-card p { color: #666; font-size: 15px; }
+
+        /* Back Button Style */
+        .back-nav { padding: 15px; background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
+        .back-nav a { text-decoration: none; color: #e74c3c; font-weight: bold; cursor: pointer; }
+
+        /* Responsive for Mobile */
+        @media (max-width: 768px) {
+            .image-grid { grid-template-columns: 1fr; } /* Mobile par ek hi column dikhega */
+        }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <div class="back-nav">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">NAVJIVAN MODEL OF CARE</h1>
+
+        <div class="section-header">
+            <h2>World-class Infrastructure</h2>
+            <p style="color: #777; max-width: 800px; margin: 10px auto;">
+                Navjivan provides doctors a platform with state-of-the-art infrastructure, enabling them to perform complex procedures with ease.
+            </p>
+        </div>
+
+        <div class="image-grid">
+            <div class="grid-item">
+                <img src="https://www.acmehospital.com/asset/Img/ot/OTT-2.jpg" alt="OT Room">
+            </div>
+            <div class="grid-item">
+                <img src="https://d45jl3w9libvn.cloudfront.net/jaypee/static/books/9788180619120/Chapters/images/50-1.jpg" alt="Patient Room">
+            </div>
+            <div class="grid-item">
+                <img src="https://www.calwinhospitals.in/wp-content/uploads/2022/06/Calwin-Hospitals-Lab-Testing.jpg" alt="Lab Area">
+            </div>
+            <div class="grid-item">
+                <img src="https://clincasequest.hospital/wp-content/uploads/sites/7/2021/05/business_game-768x512-1.jpg" alt="Medical Tech">
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3>Trust-based Compassionate Care</h3>
+            <p>
+                Navjivan is committed to delivering advanced healthcare by establishing institutes of excellence that seamlessly integrate medical care, teaching, and research. Every life is invaluable, and we ensure transparency in our systems and processes.
+            </p>
+        </div>
+    </div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+

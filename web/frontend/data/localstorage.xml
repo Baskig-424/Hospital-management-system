@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<store>
+  <admin>
+    <password>admin123</password>
+  </admin>
+  <products>
+    <product id="med-1">
+      <name>Paracetamol 650</name>
+      <image>https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>45</price>
+    </product>
+    <product id="med-2">
+      <name>Azithromycin 500</name>
+      <image>https://images.unsplash.com/photo-1580281657527-47f249e8f0f5?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>160</price>
+    </product>
+    <product id="med-3">
+      <name>Vitamin C 1000</name>
+      <image>https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>120</price>
+    </product>
+    <product id="med-4">
+      <name>Cough Syrup</name>
+      <image>https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>95</price>
+    </product>
+    <product id="med-5">
+      <name>Blood Pressure Kit</name>
+      <image>https://images.unsplash.com/photo-1513224502586-d1e602410265?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>620</price>
+    </product>
+    <product id="med-6">
+      <name>Diabetes Test Strips</name>
+      <image>https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>210</price>
+    </product>
+    <product id="med-7">
+      <name>Antacid Gel</name>
+      <image>https://images.unsplash.com/photo-1584634731339-252c581abfc5?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>70</price>
+    </product>
+    <product id="med-8">
+      <name>Allergy Relief</name>
+      <image>https://images.unsplash.com/photo-1582719478148-9757cfcf9f78?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>110</price>
+    </product>
+    <product id="med-9">
+      <name>Thermometer</name>
+      <image>https://images.unsplash.com/photo-1584118624012-df056829fbd0?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>180</price>
+    </product>
+    <product id="med-10">
+      <name>ORS Sachets</name>
+      <image>https://images.unsplash.com/photo-1582719201952-ea63ac1671dc?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>35</price>
+    </product>
+    <product id="med-11">
+      <name>Pain Relief Spray</name>
+      <image>https://images.unsplash.com/photo-1580281780460-82d277b0e3f4?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>160</price>
+    </product>
+    <product id="med-12">
+      <name>Hand Sanitizer</name>
+      <image>https://images.unsplash.com/photo-1583947215259-38e31be8751f?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>80</price>
+    </product>
+    <product id="med-13">
+      <name>Calcium Tablets</name>
+      <image>https://images.unsplash.com/photo-1584308666744-8d0afc8d5a2d?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>140</price>
+    </product>
+    <product id="med-14">
+      <name>Multivitamin</name>
+      <image>https://images.unsplash.com/photo-1612349317150-4f17fcd5c6e1?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>175</price>
+    </product>
+    <product id="med-15">
+      <name>Eye Drops</name>
+      <image>https://images.unsplash.com/photo-1595246007497-6897223d9ee6?q=80&amp;w=800&amp;auto=format&amp;fit=crop</image>
+      <price>90</price>
+    </product>
+  </products>
+  <orders>
+    <order id="ORD-1001">
+      <customerName>Ravi Singh</customerName>
+      <patientName>Riya Singh</patientName>
+      <mobile>9876543210</mobile>
+      <age>32</age>
+      <date>2026-03-10</date>
+      <items>
+        <item id="med-1" qty="2" />
+        <item id="med-4" qty="1" />
+      </items>
+    </order>
+    <order id="ORD-1002">
+      <customerName>Neha Verma</customerName>
+      <patientName>Krish Verma</patientName>
+      <mobile>9123456780</mobile>
+      <age>8</age>
+      <date>2026-03-11</date>
+      <items>
+        <item id="med-3" qty="1" />
+        <item id="med-10" qty="3" />
+      </items>
+    </order>
+    <order id="ORD-1003">
+      <customerName>Arjun Patel</customerName>
+      <patientName>Arjun Patel</patientName>
+      <mobile>9988776655</mobile>
+      <age>45</age>
+      <date>2026-03-13</date>
+      <items>
+        <item id="med-6" qty="2" />
+        <item id="med-9" qty="1" />
+        <item id="med-12" qty="2" />
+      </items>
+    </order>
+    <order id="ORD-1004">
+      <customerName>Sana Khan</customerName>
+      <patientName>Aman Khan</patientName>
+      <mobile>9090909090</mobile>
+      <age>27</age>
+      <date>2026-03-15</date>
+      <items>
+        <item id="med-2" qty="1" />
+        <item id="med-8" qty="2" />
+      </items>
+    </order>
+    <order id="ORD-1005">
+      <customerName>Mohit Das</customerName>
+      <patientName>Mohit Das</patientName>
+      <mobile>9811223344</mobile>
+      <age>60</age>
+      <date>2026-03-16</date>
+      <items>
+        <item id="med-5" qty="1" />
+        <item id="med-7" qty="2" />
+        <item id="med-15" qty="1" />
+      </items>
+    </order>
+  </orders>
+</store>

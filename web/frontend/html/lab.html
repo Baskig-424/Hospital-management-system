@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Care - Neuroscience Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #f34e3a;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-gray: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; border-radius: 10px; }
+
+        /* --- 1. Top Navigation --- */
+        header { padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; gap: 15px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .nav-links a { text-decoration: none; color: #888; transition: 0.3s; }
+        .nav-links a.active { color: var(--primary-red); }
+
+        /* --- 2. Hero Section --- */
+        .hero { padding: 80px 0; display: flex; align-items: center; gap: 40px; }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 48px; margin-bottom: 20px; }
+        .point-list { list-style: none; margin-bottom: 30px; }
+        .point-list li { margin-bottom: 15px; position: relative; padding-left: 25px; font-size: 14px; color: #555; font-weight: 600; }
+        .point-list li::before { content: '○'; position: absolute; left: 0; color: var(--primary-red); font-weight: bold; }
+        
+        .hero-image { flex: 1; position: relative; display: flex; justify-content: center; }
+        .circle-bg { border: 1px dashed #ccc; border-radius: 50%; padding: 40px; width: 450px; height: 450px; display: flex; align-items: center; justify-content: center; }
+        .circle-bg img { border-radius: 50%; width: 380px; height: 380px; object-fit: cover; }
+
+        .btn-group { display: flex; gap: 15px; }
+        .btn { padding: 12px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .btn-red { background: var(--primary-red); color: #fff; }
+        .btn-outline { border: 1px solid #ccc; color: #666; }
+
+        /* --- 3. About Section --- */
+        .section-padding { padding: 80px 0; }
+        .about-flex { display: flex; gap: 50px; }
+        .about-flex h2 { font-size: 32px; flex: 1; }
+        .about-flex div { flex: 2; }
+
+        /* --- 4. Doctor Profile --- */
+        .doctor-box { background: var(--bg-gray); padding: 100px 0; text-align: center; }
+        .dr-circle-wrap { position: relative; display: inline-block; margin-top: 40px; }
+        .dr-bg-circle { width: 450px; height: 450px; background: var(--primary-red); border-radius: 50%; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .dr-img { position: relative; z-index: 5; width: 350px; }
+        .dr-info { margin-top: 30px; }
+        .dr-info h3 { font-size: 26px; }
+        .dr-info p { color: var(--primary-red); font-weight: bold; }
+
+        /* --- 5. Team Cards --- */
+        .center-title { text-align: center; margin-bottom: 50px; }
+        .center-title h2 { font-size: 36px; color: var(--primary-red); }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .team-card { background: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; }
+        .card-content { padding: 25px; font-size: 14px; color: #777; }
+
+        /* --- 6. Treatment List --- */
+        .treatment-section { display: flex; gap: 60px; align-items: center; margin-top: 50px; }
+        .t-list { flex: 1; list-style: none; }
+        .t-list li { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; cursor: pointer; font-weight: 600; }
+        .t-list li.active { color: var(--primary-red); border-left: 4px solid var(--primary-red); padding-left: 16px; }
+        .t-display { flex: 1; text-align: center; }
+        .t-display img { border-radius: 50%; width: 350px; height: 350px; object-fit: cover; border: 1px dashed #999; padding: 10px; }
+
+        /* --- 7. Technology Grid --- */
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .tech-card { background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); overflow: hidden; position: relative; }
+        .tech-card p { padding: 20px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .tech-card .arrow-down { color: var(--primary-red); border: 1px solid #eee; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; }
+
+        /* --- 8. Patient Stories --- */
+        .stories-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+        .story-card { min-width: 350px; position: relative; border-radius: 20px; overflow: hidden; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .story-info { position: absolute; bottom: 20px; left: 20px; color: #fff; }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid #eee; padding: 50px 0; margin-top: 50px; }
+        .footer-link { border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; font-weight: bold; color: #444; }
+
+        @media (max-width: 900px) {
+            .hero, .about-flex, .card-grid, .treatment-section, .tech-grid { flex-direction: column; grid-template-columns: 1fr; }
+            .hero-text { text-align: center; order: 2; }
+            .hero-image { order: 1; }
+            .dr-bg-circle { width: 300px; height: 300px; }
+            .dr-img { width: 250px; }
+        }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <h2 class="brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">NAVJIVAN</span> <span class="care">CARE</span></h2>
+            <nav class="nav-links">
+                <a href="#" class="active">Overview</a>
+                <a href="#">Heart Team</a>
+                <a href="#">Treatment</a>
+                <a href="#">Ailment</a>
+                <a href="#">Technology</a>
+                <a href="#">Patient Stories</a>
+            </nav>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <strong>En ▾</strong>
+            </div>
+        </div>
+    </header>
+
+    <section class="container hero">
+        <div class="hero-text">
+            <h1>Neuroscience Care</h1>
+            <ul class="point-list">
+                <li>Among India's largest and most successful Neuro teams</li>
+                <li>Comprehensive, holistic care for Brain and Spine</li>
+                <li>Multidisciplinary team backed by specialized staff</li>
+                <li>Pioneers in next-generation robotic neuro-therapies</li>
+                <li>24/7 Specialized Emergency Stroke services</li>
+            </ul>
+            <div class="btn-group">
+                <a href="#" class="btn btn-red">Enquire Now</a>
+                <a href="#" class="btn btn-outline">Find A Doctor</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="circle-bg">
+                <img src="https://www.shutterstock.com/image-illustration/human-brain-white-background-260nw-253663777.jpg" alt="Neuro Care">
+                <div style="position: absolute; left: -20px; top: 100px; text-align: left;">
+                    <h2 style="font-size: 32px;">World-Class <br><span style="color:var(--primary-red); font-size: 45px;">Neuro Care</span></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding about-flex">
+        <h2>About Us</h2>
+        <div>
+            <p>The Neuro Institute at Navjivan Care has an exceptional team comprising neurosurgeons, neurologists, and psychiatrists who work together to provide comprehensive care. Hum log 'Heart Team' ki tarah hi yahan ek integrated approach follow karte hain taaki patient ko best result mile...</p>
+            <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; margin-top: 15px; display: block;">Read More ▾</a>
+        </div>
+    </section>
+
+    <section class="doctor-box">
+        <div class="container">
+            <p style="max-width: 800px; margin: 0 auto; font-style: italic; color: #555; line-height: 1.8;">
+                "At Navjivan Care, humne ek aisa institution banaya hai jo global benchmarks ko match kare. Excellence ka ek ecosystem create kiya gaya hai jisme world-leading clinicians aur technology shamil hain."
+            </p>
+            <div class="dr-circle-wrap">
+                <div class="dr-bg-circle"></div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzUBeqwV1_9V6wu6TbGy9FN4X4mgClvEME-Q&s" alt="Dr. Trehan" class="dr-img">
+            </div>
+            <div class="dr-info">
+                <h3>Dr. Naresh Trehan</h3>
+                <p>Chairman & Managing Director, Navjivan Care</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <div class="center-title">
+            <h2>Neuro Team</h2>
+            <p>Our pioneering approach is driven by our patient-first philosophy</p>
+        </div>
+        <div class="card-grid">
+            <div class="team-card">
+                <img src="https://www.nhrcc.in/wp-content/uploads/2023/07/surgery2.png" alt="Surgery">
+                <div class="card-content">
+                    A team of neurosurgeons and interventional neurologists works seamlessly to ensure each patient receives comprehensive advice.
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://educationpost.in/_next/image?url=https%3A%2F%2Fapi.educationpost.in%2Fs3-images%2F1707287209044-Delving-into-Doctor-Patient-Ratio.jpg&w=3840&q=75" alt="Wellness">
+                <div class="card-content">
+                    Our approach seeks to address the entire spectrum ranging from prevention and disease reversal to clinical treatments.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <div class="center-title">
+            <h2 style="color: #333;">Treatments</h2>
+            <p>Team approach and compassionate care for holistic health</p>
+        </div>
+        <div class="treatment-section">
+            <ul class="t-list">
+                <li class="active">Deep Brain Stimulation (DBS) <span>></span></li>
+                <li>Spinal Fusion Surgery <span>></span></li>
+                <li>Brain Tumor Resection <span>></span></li>
+                <li>Stroke Intervention <span>></span></li>
+            </ul>
+            <div class="t-display">
+                <img src="https://www.bdsdental.in/images/01.jpg" alt="DBS">
+                <p style="margin-top: 20px; font-size: 13px; color: #777;">DBS is a surgical procedure performed to treat neurological symptoms like tremors and Parkinson's...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding" style="background: #fdfdfd; border-radius: 40px;">
+        <div class="center-title">
+            <h2 style="color: #333;">Technology</h2>
+            <p>Navjivan Care is equipped with sophisticated equipment</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <img src="https://www.ctmrihub.com/console/public/storage/product_images/2025/10/16/2025101612040110000000UVdrJ70f7O4cWXQ9nXiq.jpg" alt="Tech 1">
+                <p>Artis-Zeego Endovascular Suite <span class="arrow-down">v</span></p>
+            </div>
+            <div class="tech-card">
+                <img src="https://api.neohospital.com/uploads/Service/image-1718691221278-475456045-MRI.jpg" alt="Tech 2">
+                <p>Intraoperative MRI (iMRI) <span class="arrow-down">v</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <div class="center-title">
+            <h2 style="color: #333;">Patient Stories</h2>
+        </div>
+        <div class="stories-grid">
+            <div class="story-card">
+                <img src="https://static.independent.co.uk/2022/06/20/07/17140322-81fc791e-c083-4720-ab18-22e18a4df8af.jpg" alt="Story">
+                <div class="play-btn">▶</div>
+                <div class="story-info">
+                    <h4>Brain Tumor Recovery</h4>
+                    <small>Ms. Willim</small>
+                </div>
+            </div>
+            <div class="story-card">
+                <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1024x768_scale,f_auto,q_auto:best/rockcms/2024-03/mom-sings-taylor-swift-song-awake-brain-surgery-mc-240326-02-199291.jpg" alt="Story">
+                <div class="play-btn">▶</div>
+                <div class="story-info">
+                    <h4>Stroke Survival Story</h4>
+                    <small>Ms. Perry</small>
+                </div>
+            </div>
+            <div class="story-card">
+                <img src="https://news.stanford.edu/__data/assets/image/0031/171679/Angst-story-slide-6-1500x1000.jpg" alt="Story">
+                <div class="play-btn">▶</div>
+                <div class="story-info">
+                    <h4>Spine Surgery Success</h4>
+                    <small>Grandmother</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="footer-link">For Patients <span>+</span></div>
+        <div class="footer-link">Specialities <span>+</span></div>
+        <div class="footer-link">Our Hospitals <span>+</span></div>
+        <div class="footer-link">Corporate <span>+</span></div>
+        <div style="text-align: center; margin-top: 40px;">
+            <p style="font-size: 12px; color: #999;">Copyright © 2026 Navjivan Care. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">� 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

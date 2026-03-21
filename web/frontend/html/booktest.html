@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Health Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS: Design aur Layout */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f8f9fa; }
+
+        /* Header */
+        .header { display: flex; justify-content: space-between; padding: 15px 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { color: #e74c3c; font-weight: bold; font-size: 22px; }
+        .nav a { text-decoration: none; color: #555; margin-left: 20px; cursor: pointer; font-weight: 500; }
+        .nav a:hover { color: #e74c3c; }
+
+        /* Hero Area */
+        .hero { background: linear-gradient(to bottom, #ff5f40, #ff8c69); padding: 40px 20px; color: white; text-align: center; }
+        
+        /* Main Cards Area */
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        .section-title { margin: 20px 0 10px; color: #444; font-size: 16px; }
+        .grid { display: flex; gap: 10px; margin-bottom: 20px; }
+        
+        .card { 
+            flex: 1; background: white; padding: 15px; border-radius: 12px; 
+            text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+            cursor: pointer; transition: 0.3s; border: 1px solid #eee;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 24px; color: #e74c3c; margin-bottom: 10px; }
+        .card p { font-size: 12px; color: #333; font-weight: 500; }
+
+        /* Modal (Popup) Style */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.6);
+            z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-box {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 400px; text-align: center; position: relative;
+        }
+        .close-btn { position: absolute; right: 20px; top: 15px; cursor: pointer; font-size: 24px; color: #888; }
+        
+        .modal-logo { width: 150px; margin: 15px 0; }
+        .input-group { 
+            display: flex; border: 1px solid #ddd; border-radius: 8px; 
+            margin: 20px 0; padding: 12px; align-items: center; 
+        }
+        .input-group input { border: none; outline: none; width: 100%; margin-left: 10px; font-size: 16px; }
+        
+        .btn-otp { 
+            background: #e74c3c; color: white; border: none; 
+            width: 100%; padding: 12px; border-radius: 8px; 
+            font-size: 16px; font-weight: bold; cursor: pointer; 
+        }
+        .modal-link { display: block; margin-top: 15px; color: #e74c3c; text-decoration: none; font-size: 14px; }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <header class="header">
+        <div class="logo brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span></div>
+        <nav class="nav">
+            <a onclick="openModal()">Appointments</a>
+            <a onclick="openModal()">Records</a>
+            <a onclick="openModal()">Login</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Hum Log Aapki Seva Mein Taiyar Hain</h2>
+        <p>Book Tests in one click</p>
+    </div>
+
+    <div class="container">
+        <h4 class="section-title">Diagnostic Services</h4>
+        <div class="grid">
+            <div class="card" onclick="openModal()"><i class="fas fa-x-ray"></i><p>Chest X-ray</p></div>
+            <div class="card" onclick="openModal()"><i class="fas fa-stethoscope"></i><p>Body Checkup</p></div>
+            <div class="card" onclick="openModal()"><i class="fas fa-vial"></i><p>Blood Tests</p></div>
+        </div>
+
+        <h4 class="section-title">Specialities</h4>
+        <div class="grid">
+            <div class="card" onclick="openModal()"><i class="fas fa-heartbeat"></i><p>ECG</p></div>
+            <div class="card" onclick="openModal()"><i class="fas fa-brain"></i><p>City Scan</p></div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p style="color:#888; font-size: 12px;">Welcome To</p>
+            <h2 style="color:#e74c3c;">Navjivan</h2>
+            <p style="margin-top: 20px; font-weight: bold;">Login with Mobile Number</p>
+            
+            <div class="input-group">
+                <span>+91</span>
+                <input type="text" id="mobileInput" placeholder="Enter 10 digit number" maxlength="10">
+            </div>
+
+            <button class="btn-otp" onclick="validateMobile()">Get OTP</button>
+            <a href="#" class="modal-link">Login with Email or Patient ID</a>
+        </div>
+    </div>
+
+    <script>
+        // 1. Modal open karne ke liye
+        function openModal() {
+            document.getElementById("loginModal").style.display = "flex";
+        }
+
+        // 2. Modal band karne ke liye
+        function closeModal() {
+            document.getElementById("loginModal").style.display = "none";
+        }
+
+        // 3. Mobile Number Validate karne ke liye
+        function validateMobile() {
+            var num = document.getElementById("mobileInput").value;
+            if (num.length === 10 && !isNaN(num)) {
+                alert(" Thankyou OTP send to this " + num + " number.");
+                closeModal(); // Number sahi hone par modal band kar dete hain
+            } else {
+                alert(" please enter 10 digits mobile number.");
+            }
+        }
+
+        // 4. Bonus: Agar user box ke bahar click kare toh bhi modal band ho jaye
+        window.onclick = function(event) {
+            var modal = document.getElementById("loginModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

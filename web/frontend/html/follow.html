@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medanta - Cardiac Care Excellence</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <div id="saved-msg">Aapka data save ho gaya hai! ✓</div>
+
+    <header>
+        <div class="container nav-wrapper">
+            <h2 class="brand-logo brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span></h2>
+            <nav class="nav-links">
+                <a href="#home">Overview</a>
+                <a href="#cardiac">Cardiac Care</a>
+                <a href="#about">About Us</a>
+                <a href="#footer">For Patients</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="callback-card">
+            <h2>Request a Callback</h2>
+            <form id="callBackForm">
+                <div class="input-group">
+                    <label>Name *</label>
+                    <input type="text" placeholder="Enter Your Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" placeholder="Enter Mobile Number" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter Your Email">
+                </div>
+                <textarea placeholder="Message" rows="3"></textarea>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="cardiac" class="container section-padding">
+        <h1 class="section-title">Cardiac Care</h1>
+        <div class="cardiac-flex">
+            <ul class="points-list">
+                <li>Among India's largest Heart Care teams led by pioneers</li>
+                <li>End-to-end holistic care for all heart conditions</li>
+                <li>Multidisciplinary team of doctors backed by specialized nursing</li>
+                <li>Pioneers in next-generation robotic therapies</li>
+            </ul>
+            <div class="hero-visual">
+                <div class="circle-dashed">
+                    <div class="inner-circle-content">
+                        <img src="https://via.placeholder.com/300?text=Heart+Graphic" alt="Heart">
+                        <h2>World-Class <br><span>Cardiac Care</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="container">
+        <div class="accordion-container">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAcc('pat')">
+                    For Patients <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="pat" class="accordion-content">
+                    <a href="#">Find a Doctor</a>
+                    <a href="#">Book Appointment</a>
+                    <a href="#">Treatments</a>
+                    <a href="#">Emergency 24x7</a>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAcc('spec')">
+                    Specialities <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="spec" class="accordion-content">
+                    <a href="#">Cardiac Care</a>
+                    <a href="#">Cancer Care</a>
+                    <a href="#">Neurosciences</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2026 Medanta The Medicity. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAcc(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('open');
+        }
+
+        document.getElementById('callBackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('saved-msg');
+            msg.style.display = 'block';
+            this.reset();
+            setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        });
+    </script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">� 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

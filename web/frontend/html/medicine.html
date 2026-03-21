@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Store - Navjivan Care</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="top-bar">
+      <div class="brand-mark" style="font-size:20px;"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo">
+        <span class="navjivan">Navjivan</span> <span class="care">Care</span> Medicine Store
+      </div>
+      <div class="admin-actions">
+        <a href="medical.html" class="badge" style="text-decoration:none;">Back</a>
+        <a href="admin-login.html" class="badge" style="text-decoration:none;">Admin Login</a>
+      </div>
+    </div>
+
+    <div id="orderSuccess" class="success-toast" aria-live="polite">
+      <i class="fa-solid fa-circle-check"></i>
+      Order confirmed. Transaction successful.
+    </div>
+
+    <div style="height:12px"></div>
+
+    <div class="grid">
+      <div class="card col-8">
+        <h3>Medicines</h3>
+        <div id="medicineGrid" class="medicine-grid"></div>
+      </div>
+
+      <div class="card col-4">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <div style="height:10px"></div>
+        <div class="total">Total: <span id="cartTotal">?0</span></div>
+        <div style="height:12px"></div>
+        <form id="orderForm">
+          <label for="customerName">Customer Name</label>
+          <input id="customerName" required>
+          <div style="height:10px"></div>
+          <label for="patientName">Patient Name</label>
+          <input id="patientName" required>
+          <div style="height:10px"></div>
+          <label for="patientMobile">Mobile No</label>
+          <input id="patientMobile" type="tel" required>
+          <div style="height:10px"></div>
+          <label for="patientAge">Age</label>
+          <input id="patientAge" type="number" min="1" required>
+          <div style="height:12px"></div>
+          <button type="submit">Place Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+        <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+        <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+      </div>
+      <div class="social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/store.js"></script>
+</body>
+</html>
+

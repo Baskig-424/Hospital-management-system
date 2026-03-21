@@ -1,0 +1,276 @@
+﻿/* Admin + Medical shared styles */
+:root{
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --brand: #1a6fd1;
+  --accent: #25D366;
+}
+
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.page-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.top-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--panel);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+  margin-bottom: 18px;
+}
+
+.card{
+  background: var(--panel);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.col-4{ grid-column: span 4; }
+.col-6{ grid-column: span 6; }
+.col-8{ grid-column: span 8; }
+.col-12{ grid-column: span 12; }
+
+@media (max-width: 900px){
+  .col-4, .col-6, .col-8{ grid-column: span 12; }
+}
+
+label{ font-size: 13px; color: var(--muted); display:block; margin-bottom:6px; }
+input, select{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+}
+
+button{
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button.secondary{
+  background: #111827;
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th, .table td{
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 8px;
+}
+
+.badge{
+  display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.product{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 10px 0;
+  border-bottom:1px dashed #e5e7eb;
+}
+
+.product:last-child{ border-bottom:none; }
+
+.cart-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 8px 0;
+  border-bottom:1px solid #eef2f7;
+}
+
+.cart-item:last-child{ border-bottom:none; }
+
+.total{
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.notice{
+  background: #ecfeff;
+  color: #0e7490;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cffafe;
+}
+
+.muted{
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.medicine-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.med-card{
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.med-img{
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.med-body{
+  padding: 12px 14px 14px;
+}
+
+.med-body h4{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.med-meta{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price{
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.qty-controls{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.qty-btn{
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+}
+
+.qty{
+  min-width: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cart-line{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.cart-line:last-child{
+  border-bottom: none;
+}
+
+.success-toast{
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.success-toast.show{
+  display: flex;
+}
+
+.danger{
+  background: #dc2626;
+}
+
+.admin-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-table th, .admin-table td{
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-actions{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.center-card{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.center-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-form input{
+  max-width: 320px;
+  text-align: center;
+}
+
+.center-page{
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+}

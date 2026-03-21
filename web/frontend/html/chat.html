@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Care - Smart Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #f34e3a;
+            --deep-blue: #1a2a6c;
+            --text-dark: #333;
+            --bg-light: #f4f7f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-dark); }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- Header --- */
+        header { background: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-logo { font-size: 22px; font-weight: 700; color: var(--primary-red); text-align: center; text-transform: uppercase; }
+
+        /* --- Chat Interface --- */
+        .chat-container {
+            max-width: 800px; margin: 40px auto; background: #fff; border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; height: 450px;
+        }
+        .chat-header { background: var(--deep-blue); color: #fff; padding: 20px; text-align: center; font-weight: 600; }
+        #chat-window { flex: 1; padding: 20px; overflow-y: auto; background: #fdfdfd; display: flex; flex-direction: column; gap: 15px; }
+        
+        .message { max-width: 75%; padding: 12px 18px; border-radius: 15px; font-size: 14px; line-height: 1.5; }
+        .bot-msg { background: #eee; align-self: flex-start; color: #333; border-bottom-left-radius: 2px; }
+        .user-msg { background: var(--primary-red); align-self: flex-end; color: #fff; border-bottom-right-radius: 2px; }
+
+        .chat-input-area { display: flex; padding: 15px; border-top: 1px solid #eee; background: #fff; }
+        #user-input { flex: 1; border: 1px solid #ddd; padding: 12px 20px; border-radius: 30px; outline: none; }
+        #send-btn { background: var(--primary-red); color: #fff; border: none; padding: 0 25px; margin-left: 10px; border-radius: 30px; cursor: pointer; }
+
+        /* --- Updated Doctor Cards (5 in a Row) --- */
+        .section-title { text-align: center; margin: 50px 0 30px; font-size: 28px; }
+        .doctor-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); /* Force 5 columns */
+            gap: 15px; 
+            margin-bottom: 60px; 
+        }
+        .dr-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; padding-bottom: 15px; border: 1px solid #eee; transition: 0.3s; }
+        .dr-card:hover { transform: translateY(-5px); }
+        .dr-img { width: 100%; height: 160px; object-fit: cover; background: #eee; }
+        .dr-name { font-weight: 700; margin: 10px 0 3px; font-size: 14px; }
+        .dr-spec { color: var(--primary-red); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+        /* --- Footer & Social --- */
+        footer { background: var(--deep-blue); color: #fff; padding: 60px 0 20px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-box h3 { margin-bottom: 20px; color: var(--primary-red); }
+        .footer-box p { font-size: 14px; line-height: 1.8; opacity: 0.8; margin-bottom: 10px; }
+        
+        .social-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 20px 0; }
+        .social-icon { 
+            position: relative; display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%;
+            cursor: pointer; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            color: #fff; text-decoration: none; overflow: hidden;
+        }
+        .social-icon .name-tag { position: absolute; opacity: 0; font-weight: 700; font-size: 12px; transform: translateY(30px); transition: 0.4s; }
+        .social-icon.active { width: 140px; border-radius: 30px; background: var(--primary-red); }
+        .social-icon.active i { transform: translateX(-40px); opacity: 0; }
+        .social-icon.active .name-tag { opacity: 1; transform: translateY(0); }
+
+        /* Responsive for small screens */
+        @media (max-width: 1000px) { .doctor-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <header>
+        <div class="container"><div class="nav-logo brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span> Portal</div></div>
+    </header>
+
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">Assistance Chatbot</div>
+            <div id="chat-window">
+                <div class="message bot-msg">Namaste! Main Navjivan Care ka virtual assistant hoon. Apki kaise madad kar sakta hoon?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Type 'Doctors' or 'Location'...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Our Leading Specialists</h2>
+        <div class="doctor-grid">
+            <div class="dr-card">
+                <img src="https://www.artemishospitals.com/BackEndImages/DoctorImage/dr-dr-a-b-dey.jpg" class="dr-img">
+                <div class="dr-name">Dr. Naresh Trehan</div>
+                <div class="dr-spec">Cardiac Surgery</div>
+            </div>
+            <div class="dr-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROzErxsUa5aqqfeXiI6k5ErVHxM9phEYmOTw&s" class="dr-img">
+                <div class="dr-name">Dr. V.P. Singh</div>
+                <div class="dr-spec">Neurosciences</div>
+            </div>
+            <div class="dr-card">
+                <img src="https://burst.shopifycdn.com/photos/a-doctor-smiles-while-holding-her-clipboard.jpg?width=1000" class="dr-img">
+                <div class="dr-name">Dr. Kavita Bansal</div>
+                <div class="dr-spec">Gynaecology</div>
+            </div>
+            <div class="dr-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVlvm_NiEyuvC06TorpxxBKXWQaHQYcS_jg&s" class="dr-img">
+                <div class="dr-name">Dr. Ashok Vaid</div>
+                <div class="dr-spec">Oncology</div>
+            </div>
+            <div class="dr-card">
+                <img src="https://corporate-storage-1.s3.dualstack.ap-south-1.amazonaws.com/prod/doctor-profiles/1762255826895-upload-3790701625567083960DR%20SHAILESH%20PHOTO%20(1).jpeg" class="dr-img">
+                <div class="dr-name">Dr. A.S. Soin</div>
+                <div class="dr-spec">Liver Transplant</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-box">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> support@navjivancare.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Health Enclave, Lucknow, India</p>
+                </div>
+                <div class="footer-box">
+                    <h3>Get Our App</h3>
+                    <div style="font-size: 24px; display: flex; gap: 20px;">
+                        <i class="fab fa-google-play"></i>
+                        <i class="fab fa-apple"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-container">
+                <a class="social-icon" onclick="toggleSocial(this)"><i class="fab fa-facebook-f"></i><span class="name-tag">FACEBOOK</span></a>
+                <a class="social-icon" onclick="toggleSocial(this)"><i class="fab fa-instagram"></i><span class="name-tag">INSTAGRAM</span></a>
+                <a class="social-icon" onclick="toggleSocial(this)"><i class="fab fa-twitter"></i><span class="name-tag">TWITTER</span></a>
+                <a class="social-icon" onclick="toggleSocial(this)"><i class="fab fa-linkedin-in"></i><span class="name-tag">LINKEDIN</span></a>
+                <a class="social-icon" onclick="toggleSocial(this)"><i class="fab fa-youtube"></i><span class="name-tag">YOUTUBE</span></a>
+            </div>
+            <p style="text-align: center; font-size: 12px; opacity: 0.6; margin-top: 20px;">Â© 2026 Navjivan Care. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chat Logic
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        function addMessage(text, type) {
+            const div = document.createElement('div');
+            div.className = `message ${type}-msg`;
+            div.innerText = text;
+            chatWindow.appendChild(div);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function handleChat() {
+            const query = userInput.value.toLowerCase();
+            if(!query) return;
+            addMessage(userInput.value, 'user');
+            userInput.value = '';
+
+            setTimeout(() => {
+                if(query.includes('doctor')) addMessage("Humare 5 main specialists niche grid mein diye gaye hain.", 'bot');
+                else if(query.includes('location')) addMessage("Humara main hospital Lucknow mein sthit hai.", 'bot');
+                else addMessage("Dhanyawad! Kya main kisi aur cheez mein apki madad kar sakta hoon?", 'bot');
+            }, 600);
+        }
+
+        sendBtn.onclick = handleChat;
+        userInput.onkeypress = (e) => { if(e.key === 'Enter') handleChat(); };
+
+        // Social Toggle Logic
+        function toggleSocial(element) {
+            document.querySelectorAll('.social-icon').forEach(icon => {
+                if(icon !== element) icon.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+    </script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+

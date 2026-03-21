@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navjivan Care - All Specialists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #f34e3a;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: #fff; color: var(--text-dark); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- Header Styling --- */
+        header { padding: 20px 0; border-bottom: 1px solid #eee; text-align: center; background: #fff; }
+        .nav-logo { font-size: 24px; font-weight: 700; color: var(--primary-red); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- Hero Section --- */
+        .doctor-hero { text-align: center; padding: 60px 0 40px; background: var(--bg-light); margin-bottom: 40px; }
+        .doctor-hero h1 { font-size: 36px; margin-bottom: 15px; color: var(--text-dark); }
+        .doctor-hero p { color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- Search/Filter Bar (Simulating the image) --- */
+        .filter-section { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; }
+        .filter-box { padding: 12px 25px; border: 1px solid #ddd; border-radius: 30px; color: #666; font-size: 14px; min-width: 200px; }
+        .btn-go { background: var(--primary-red); color: #fff; border: none; padding: 12px 40px; border-radius: 30px; font-weight: 600; cursor: pointer; }
+
+        /* --- Doctor Grid --- */
+        .doctor-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
+            padding-bottom: 80px;
+        }
+
+        /* --- Doctor Card Styling --- */
+        .doctor-card { 
+            background: #fff; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: var(--card-shadow); 
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 25px;
+        }
+        .doctor-card:hover { transform: translateY(-10px); }
+
+        .dr-img-container {
+            width: 100%;
+            height: 250px;
+            background: #f0f0f0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .dr-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dr-info { padding: 0 20px; }
+        .dr-name { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+        .dr-specialty { color: var(--primary-red); font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+        .dr-qual { font-size: 13px; color: var(--text-light); margin-bottom: 8px; font-style: italic; }
+        .dr-exp { font-size: 14px; font-weight: 600; color: #444; margin-bottom: 20px; }
+
+        .view-more-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            gap: 8px;
+        }
+        .view-more-link .arrow-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-section { flex-direction: column; align-items: center; }
+            .filter-box { width: 100%; max-width: 300px; }
+        }
+    </style>
+  <link rel="stylesheet" href="../css/common.css">
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-logo brand-mark"><img class="brand-logo-img" src="../assets/navjivan-logo.jpg" alt="Navjivan Logo"><span class="navjivan">Navjivan</span> <span class="care">Care</span></div>
+        </div>
+    </header>
+
+    <section class="doctor-hero">
+        <div class="container">
+            <h1>Doctors, Pioneers, Life Savers</h1>
+            <p>Humare doctors world-class institutions se trained hain aur team-based approach ke saath aapki sehat ka khayal rakhte hain. Har specialist apne field mein behtareen experience rakhta hai.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="filter-section">
+            <select class="filter-box">
+                <option>Select Location</option>
+                <option>Gurugram</option>
+                <option>Lucknow</option>
+                 <option>Patna</option>
+                <option>Ranchi</option>
+            </select>
+            <select class="filter-box">
+                <option>All Specialities</option>
+                <option>cardiologists</option>
+                <option>Neurologist</option>
+                <option>Orthopaedics</option>
+                <option>Dermatologist</option>
+                <option>Gynaecology</option>
+                <option>Oncologist</option>
+                <option>Pediatricians</option>
+            </select>
+            <button class="btn-go">Go</button>
+        </div>
+
+        <div class="doctor-grid" id="doctorGrid">
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://www.artemishospitals.com/BackEndImages/DoctorImage/dr-dr-a-b-dey.jpg" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Naresh Trehan</div>
+                    <div class="dr-specialty">Cardiac Surgery</div>
+                    <div class="dr-qual">MBBS, MD (USA), FACS</div>
+                    <div class="dr-exp">Experience: 40+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVlvm_NiEyuvC06TorpxxBKXWQaHQYcS_jg&s" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Ashok Vaid</div>
+                    <div class="dr-specialty">Medical Oncology</div>
+                    <div class="dr-qual">MBBS, MD, DM</div>
+                    <div class="dr-exp">Experience: 32+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://corporate-storage-1.s3.dualstack.ap-south-1.amazonaws.com/prod/doctor-profiles/1762255826895-upload-3790701625567083960DR%20SHAILESH%20PHOTO%20(1).jpeg" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. A.S. Soin</div>
+                    <div class="dr-specialty">Liver Transplant</div>
+                    <div class="dr-qual">MBBS, MS, FRCS</div>
+                    <div class="dr-exp">Experience: 25+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROzErxsUa5aqqfeXiI6k5ErVHxM9phEYmOTw&s" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. V.P. Singh</div>
+                    <div class="dr-specialty">Neurosciences</div>
+                    <div class="dr-qual">MBBS, M.Ch (Neuro)</div>
+                    <div class="dr-exp">Experience: 30+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yfGVufDB8fDB8fHww" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Rajesh Ananda</div>
+                    <div class="dr-specialty">Orthopaedics</div>
+                    <div class="dr-qual">MBBS, MS (Ortho)</div>
+                    <div class="dr-exp">Experience: 22+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGPEedogSxrkgsRYIua-2nTXIC5SlFmqoabQ&s" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Sandeep Mittal</div>
+                    <div class="dr-specialty">Gastrosciences</div>
+                    <div class="dr-qual">MD, DM (Gastro)</div>
+                    <div class="dr-exp">Experience: 18+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzFvm3o_psqlmf-MGrToEarXc7mQasUXxbcA&s" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Pooja Arora</div>
+                    <div class="dr-specialty">Nephrology</div>
+                    <div class="dr-qual">MBBS, MD, DNB</div>
+                    <div class="dr-exp">Experience: 15+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://content.jdmagicbox.com/v2/comp/delhi/k4/011pxx11.xx11.250224135252.m8k4/catalogue/precious-smile-medical-dental-and-aesthetic-centre-mohan-co-operative-industrial-area-delhi-dentists-e76ldaluw8-250.jpg" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Manish Gupta</div>
+                    <div class="dr-specialty">Urology</div>
+                    <div class="dr-qual">MS, M.Ch (Urology)</div>
+                    <div class="dr-exp">Experience: 20+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://burst.shopifycdn.com/photos/a-doctor-smiles-while-holding-her-clipboard.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Kavita Bansal</div>
+                    <div class="dr-specialty">Gynaecology</div>
+                    <div class="dr-qual">MBBS, MS, DGO</div>
+                    <div class="dr-exp">Experience: 24+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://drupal-cdn-hfaeddcdbng5hfbg.a01.azurefd.net/sites/default/files/styles/doctor_card/public/2026-02/dr-prof-ramulu.jpg.webp?itok=ocxZGeuU" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Sunil Khanna</div>
+                    <div class="dr-specialty">Internal Medicine</div>
+                    <div class="dr-qual">MBBS, MD</div>
+                    <div class="dr-exp">Experience: 28+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://thumbs.dreamstime.com/b/young-indian-female-doctor-holding-red-heart-shape-happy-77438932.jpg" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Neha Verma</div>
+                    <div class="dr-specialty">Gynaecology</div>
+                    <div class="dr-qual">MBBS, MS, DGO</div>
+                    <div class="dr-exp">Experience: 24+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="dr-img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU7AI16pD3MOnNlLOOUfaWN_IeGbyBcHphfA&s" alt="Doctor">
+                </div>
+                <div class="dr-info">
+                    <div class="dr-name">Dr. Vikram Patal</div>
+                    <div class="dr-specialty">Internal Medicine</div>
+                    <div class="dr-qual">MBBS, MD</div>
+                    <div class="dr-exp">Experience: 28+ Years</div>
+                    <a href="patient.html" class="view-more-link">View More <span class="arrow-circle">></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; background: #333; color: #fff; font-size: 12px;">
+        <p>Copyright Â© 2026 Navjivan Care. All Rights Reserved.</p>
+    </footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fas fa-envelope"></i> info@navjivancare.com</span>
+      <span><i class="fas fa-location-dot"></i> Navjivan Plaza, Sector 15, Gurugram</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-meta">© 2026 Navjivan Care. All rights reserved.</div>
+</footer>
+
+</html>
+
+
